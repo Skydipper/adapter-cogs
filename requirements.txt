@@ -1,2 +1,9 @@
 flask==1.1.1
+cython~=0.28
 rio-tiler
+rio-tiler-mosaic
+numpy
+rio-tiler-mvt
+CTRegisterMicroserviceFlask==0.4.0
+requests==2.22.0
+

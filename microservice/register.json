@@ -1,0 +1,38 @@
+{
+	"name": "cog-tiles",
+	"cache": ["cog-tiles"],
+	"uncache": ["cog-tiles"],
+	"endpoints": [{
+		"path": "/v1/layer/:layer/tile/gee/:z/:x/:y",
+		"method": "GET",
+		"redirect": {
+			"method": "GET",
+			"path": "/api/v1/layer/:layer/tile/gee/:z/:x/:y"
+		}
+	}, {
+		"path": "/v1/layer/:layer/expire-cache",
+		"method": "DELETE",
+		"authenticated": true,
+		"redirect": {
+			"method": "DELETE",
+			"path": "/api/v1/layer/:layer/expire-cache"
+		},
+		"filters": [
+            {
+                "name": "layer",
+                "path": "/v1/layer/:layer",
+                "method": "GET",
+                "params": {
+                    "layer": "layer"
+                },
+                "compare": {
+                    "data": {
+                        "attributes": {
+                            "provider": "gee"
+                        }
+                    }
+                }
+            }
+        ]
+	}]
+}
